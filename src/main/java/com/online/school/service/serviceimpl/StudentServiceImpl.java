@@ -1,14 +1,15 @@
-package com.online.school.service;
+package com.online.school.service.serviceimpl;
 
 import com.online.school.entity.Student;
 import com.online.school.repository.StudenRepo;
+import com.online.school.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class StudentServiceImpl implements StudentService{
+public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private StudenRepo studenRepo;

@@ -1,6 +1,6 @@
 package com.online.school.entity;
 
-import com.online.school.dto.AddressDto;
+import com.online.school.dto.ClassDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,20 +16,16 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Address {
+public class Class {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
-    private String firstLine;
-    private String secondLine;
-    private String pinCode;
-    private String landMark;
+    private String name;
+    private String section;
 
-    public Address(AddressDto dto) {
-        this.Id=dto.getId();
-        this.firstLine=dto.getFirstLine();
-        this.secondLine=dto.getSecondLine();
-        this.pinCode=dto.getPinCode();
-        this.landMark=dto.getLandMark();
+    public Class(ClassDto classDto) {
+        Id = classDto.getId();
+        this.name = classDto.getName();
+        this.section = classDto.getSection();
     }
 }

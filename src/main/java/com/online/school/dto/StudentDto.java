@@ -1,18 +1,17 @@
-package com.online.school.entity;
+package com.online.school.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.Date;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class Student {
-
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+public class StudentDto {
     private Long Id;
     private String rollNumber;
     private String firstName;
@@ -27,5 +26,4 @@ public class Student {
     private Date doa;                   // Date of Admission
     private Long classId;               // class foreign key
     private Long addrId;                // Address foreign key
-
 }

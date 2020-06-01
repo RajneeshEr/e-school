@@ -1,5 +1,6 @@
 package com.online.school.resource;
 
+import com.online.school.dto.AddressDto;
 import com.online.school.entity.Address;
 import com.online.school.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class AddressResource {
     }
 
     @PostMapping("/rest/api/addr/persist")
-    Address persist(@RequestBody final Address address){
+    Address persist(@RequestBody final AddressDto address){
         return addressService.save(address);
     }
 
