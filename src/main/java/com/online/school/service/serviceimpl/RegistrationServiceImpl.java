@@ -6,6 +6,7 @@ import com.online.school.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -20,8 +21,19 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
-    public Registration save(Registration registration) {
-        return registrationRepo.save(registration);
+    @Transactional(rollbackOn = Exception.class)
+    public Registration save(Registration registration) throws RuntimeException{
+        Registration save = registrationRepo.save(registration);
+        //throw new NullPointerException("null pointer");
+        Registration savereg = savereg(registration);
+        return savereg;
+    }
+
+    private Registration savereg(Registration registration) throws RuntimeException {
+        Registration save = registrationRepo.save(registration);
+        save.setClassName(null);
+        save.getClassName();
+        return save;
     }
 
     @Override
