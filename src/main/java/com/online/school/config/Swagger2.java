@@ -19,4 +19,11 @@ public class Swagger2 {
                 /*   .paths(regex("/rest.*"))*/
                 .build();
     }
+
+    public static void main(String[] args) {
+
+        Test test = new Test();
+        test.setAa(null);
+
+    }
 }

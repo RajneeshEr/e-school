@@ -1,4 +1,6 @@
 spring:
+  banner:
+    location: classpath:custom-banner.txt
   application:
     name: schoolcore
   profiles:
@@ -7,3 +9,17 @@ spring:
     addresses: localhost:5672
     username: guest
     password: guest
+    listener:
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 3s
+          max-attempts: 4
+          max-interval: 10s
+          multiplier: 2
+
+
+datafeed:
+  prop:
+    table1: flow1
+    table2: flow2

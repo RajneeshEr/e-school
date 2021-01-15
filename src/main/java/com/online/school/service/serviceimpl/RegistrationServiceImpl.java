@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
@@ -22,11 +23,25 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     @Transactional(rollbackOn = Exception.class)
-    public Registration save(Registration registration) throws RuntimeException{
-        Registration save = registrationRepo.save(registration);
+    public Registration save(Registration registration) throws RuntimeException {
+        long id = 10l;
+
+        Optional<Registration> byId = registrationRepo.findById(id);
+        Registration registration1 = byId.get();
+
+        Registration reg = new Registration();
+
+        reg.setId(id);reg.setClassName("aaa");reg.setEmail("er.ra@gmail.com");reg.setFatherName("Dalvir");
+        reg.setFirstName("Rajneesh");reg.setLastName("kabeer");reg.setMobileNo("3453443");
+        reg.setSection("A");reg.setSession("2011-2015");
+
+        Registration build = registration1.builder().id(id).className("aaa").email("er.gmail.com").firstName("dfsf")
+                .fatherName("Rajneesh").mobileNo("erwerwe").lastName("ererw").section("A").session("2011-2015").build();
+
+        Registration save = registrationRepo.save(reg);
         //throw new NullPointerException("null pointer");
-        Registration savereg = savereg(registration);
-        return savereg;
+
+        return reg;
     }
 
     private Registration savereg(Registration registration) throws RuntimeException {
@@ -38,7 +53,8 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public List<Registration> findByFirstnameLike(String fname) {
-        return registrationRepo.findByFirstNameLike(fname);
+        List<Registration> byFirstNameLike = registrationRepo.findByFirstNameLike(fname);
+        return byFirstNameLike;
     }
 
     @Override
@@ -48,6 +64,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public void delete(Long id) {
+
         registrationRepo.deleteById(id);
     }
 }

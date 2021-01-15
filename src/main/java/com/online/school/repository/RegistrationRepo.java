@@ -8,6 +8,9 @@ import java.util.List;
 
 @Repository
 public interface RegistrationRepo extends JpaRepository<Registration, Long> {
+
     List<Registration> findByFirstNameLike(final String fname);
     List<Registration> findByFirstNameContaining(final String fname);
+    List<Registration> findByFirstNameOrderByFatherName(final String fname);
+
 }

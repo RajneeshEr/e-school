@@ -6,10 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Builder
@@ -18,7 +15,8 @@ import javax.persistence.Id;
 @Entity
 public class Class {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "id_seq", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "id_seq", sequenceName = "id_seq",allocationSize=1)
     private Long Id;
     private String name;
     private String section;

@@ -4,13 +4,21 @@ import com.online.school.dto.AddressDto;
 import com.online.school.entity.Address;
 import com.online.school.repository.AddressRepo;
 import com.online.school.service.AddressService;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
+@ConfigurationProperties(prefix = "datafeed")
+@Data
 public class AddressServiceImpl implements AddressService {
+
+    private Map<String, String> prop;
 
     @Autowired
     private AddressRepo addressRepo;
